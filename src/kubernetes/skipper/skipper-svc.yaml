@@ -5,6 +5,8 @@ metadata:
   labels:
     app: skipper
     spring-deployment-id: scdf
+  annotations:
+    service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
 spec:
   # If you are running k8s on a local dev box, using minikube, or Kubernetes on docker desktop you can use type NodePort instead
   type: LoadBalancer
@@ -13,3 +15,4 @@ spec:
     targetPort: 7577
   selector:
     app: skipper
+  externalTrafficPolicy: Cluster

@@ -4,9 +4,12 @@ metadata:
   name: prometheus-proxy
   labels:
     app: prometheus-proxy
+  annotations:
+    service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
 spec:
   selector:
     app: prometheus-proxy
+  externalTrafficPolicy: Local
   ports:
     - name: scrape
       port: 8080

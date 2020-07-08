@@ -31,7 +31,7 @@ data:
                         host: prometheus-proxy
                         port: 7001
           grafana-info:
-            url: 'https://grafana:3000'
+            url: 'https://pier-grafana.devel.kakao.com:3000'
           task:
             platform:
               kubernetes:
@@ -40,8 +40,8 @@ data:
                     limits:
                       memory: 1024Mi
       datasource:
-        url: jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/mysql
-        username: root
+        url: jdbc:mysql://${MYSQL_SERVICE_HOST}:${MYSQL_SERVICE_PORT}/dataflow
+        username: dataflow
         password: ${mysql-root-password}
         driverClassName: org.mariadb.jdbc.Driver
         testOnBorrow: true

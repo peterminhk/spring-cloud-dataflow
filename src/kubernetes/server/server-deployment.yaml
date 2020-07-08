@@ -46,6 +46,14 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: "metadata.namespace"
+        - name: SCDF_SERVER_SERVICE_HOST
+          value: 'scdf-server'
+        - name: SCDF_SERVER_SERVICE_PORT
+          value: '80'
+        - name: SKIPPER_SERVICE_HOST
+          value: 'skipper'
+        - name: SKIPPER_SERVICE_PORT
+          value: '80'
         - name: SERVER_PORT
           value: '80'
         - name: SPRING_CLOUD_CONFIG_ENABLED
@@ -68,10 +76,14 @@ spec:
           # Add Maven repo for metadata artifact resolution for all stream apps
         - name: SPRING_APPLICATION_JSON
           value: "{ \"maven\": { \"local-repository\": null, \"remote-repositories\": { \"repo1\": { \"url\": \"https://repo.spring.io/libs-snapshot\"} } } }"
-      initContainers:
-      - name: init-mysql-wait
-        image: busybox
-        command: ['sh', '-c', 'until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;']
+        - name: MYSQL_SERVICE_HOST
+          value: pier-my1.ay1.krane.9rum.cc
+        - name: MYSQL_SERVICE_PORT
+          value: '3306'
+      # initContainers:
+      # - name: init-mysql-wait
+      #   image: busybox
+      #   command: ['sh', '-c', 'until nc -w3 -z mysql 3306; do echo waiting for mysql; sleep 3; done;']
       serviceAccountName: scdf-sa
       volumes:
         - name: database

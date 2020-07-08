@@ -4,6 +4,8 @@ metadata:
   name: grafana
   labels:
     app: grafana
+  annotations:
+    service.beta.kubernetes.io/openstack-internal-load-balancer: "true"
 spec:
   selector:
     app: grafana
@@ -11,3 +13,4 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
+  externalTrafficPolicy: Cluster
