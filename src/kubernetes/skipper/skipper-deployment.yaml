@@ -46,6 +46,8 @@ spec:
           value: mysql
         - name: MYSQL_SERVICE_HOST
           value: pier-my1.ay1.krane.9rum.cc
+        - name: MYSQL_SERVICE_PORT
+          value: '3306'
       # initContainers:
       # - name: init-mysql-wait
       #   image: busybox
